@@ -1,0 +1,9 @@
+{
+	"name": "adfrev1",
+	"location": "ukwest",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1a2409a9-ea2e-4728-81b9-e4d54209b5cf",
+		"tenantId": "5adb45a2-b382-4b09-81c1-c13fef1eb304"
+	}
+}
