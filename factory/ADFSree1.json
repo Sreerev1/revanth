@@ -1,0 +1,9 @@
+{
+	"name": "ADFSree1",
+	"location": "ukwest",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d95cbc09-02f7-4764-8943-b3af8fc6c9df",
+		"tenantId": "24881029-4194-4b3f-88f8-f1a3827cbdb8"
+	}
+}
