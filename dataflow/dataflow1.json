@@ -47,6 +47,7 @@
 				"Employees filter(equals(employee_id,'3')) ~> FilterPayrollDept",
 				"FilterPayrollDept sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['PayrollEmp.csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> PayrollEmpData"
 			]
