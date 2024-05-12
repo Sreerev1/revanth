@@ -1,22 +1,22 @@
 {
-	"name": "dataflow1",
+	"name": "Emp And Dep Data Flow",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "sourceblobDataset",
+						"referenceName": "BlobSourceDS",
 						"type": "DatasetReference"
 					},
-					"name": "DepartmentData"
+					"name": "EmpData"
 				},
 				{
 					"dataset": {
-						"referenceName": "SourceblobDataset2",
+						"referenceName": "BlobSourceDS2",
 						"type": "DatasetReference"
 					},
-					"name": "EmployeeData"
+					"name": "DeptData"
 				}
 			],
 			"sinks": [
@@ -34,28 +34,31 @@
 				}
 			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> DepartmentData",
 				"source(output(",
-				"          Employee_id as string,",
-				"          First_Name as string,",
-				"          Last_Name as string,",
-				"          Gender as string,",
-				"          Salary as string,",
-				"          Date_of_Birth as string,",
-				"          Age as string,",
-				"          Country as string,",
-				"          Department_id as string,",
-				"          Date_of_Joining as string,",
-				"          Manager_id as string,",
-				"          Currency as string,",
-				"          End_Date as string",
+				"          employee_id as string,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          department_id as string,",
+				"          Prop_4 as string,",
+				"          Prop_5 as string,",
+				"          Prop_6 as string,",
+				"          Prop_7 as string,",
+				"          Prop_8 as string,",
+				"          Prop_9 as string,",
+				"          Prop_10 as string,",
+				"          Prop_11 as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> EmployeeData",
-				"DepartmentData, EmployeeData join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     ignoreNoFilesFound: false) ~> EmpData",
+				"source(output(",
+				"          department_id as string,",
+				"          department_name as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> DeptData",
+				"EmpData, DeptData join(EmpData@department_id == DeptData@department_id,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
