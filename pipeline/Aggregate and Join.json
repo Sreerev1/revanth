@@ -1,5 +1,5 @@
 {
-	"name": "AggregateTransf",
+	"name": "Aggregate and Join",
 	"properties": {
 		"activities": [
 			{
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "TotalEmpByDept",
+						"referenceName": "Aggregate and Join DataFlow",
 						"type": "DataFlowReference"
 					},
 					"compute": {
