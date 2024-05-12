@@ -1,0 +1,55 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "BlobSourceDS",
+						"type": "DatasetReference"
+					},
+					"name": "Employees"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "sinkdatasetblob",
+						"type": "DatasetReference"
+					},
+					"name": "PayrollEmpData"
+				}
+			],
+			"transformations": [
+				{
+					"name": "FilterPayrollDept"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          employee_id as string,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          department_id as string,",
+				"          Prop_4 as string,",
+				"          Prop_5 as string,",
+				"          Prop_6 as string,",
+				"          Prop_7 as string,",
+				"          Prop_8 as string,",
+				"          Prop_9 as string,",
+				"          Prop_10 as string,",
+				"          Prop_11 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Employees",
+				"Employees filter(equals(employee_id,'3')) ~> FilterPayrollDept",
+				"FilterPayrollDept sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> PayrollEmpData"
+			]
+		}
+	}
+}
