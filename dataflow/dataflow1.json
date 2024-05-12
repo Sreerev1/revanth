@@ -1,0 +1,70 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "sourceblobDataset",
+						"type": "DatasetReference"
+					},
+					"name": "DepartmentData"
+				},
+				{
+					"dataset": {
+						"referenceName": "SourceblobDataset2",
+						"type": "DatasetReference"
+					},
+					"name": "EmployeeData"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "sinkdatasetblob",
+						"type": "DatasetReference"
+					},
+					"name": "OutputData"
+				}
+			],
+			"transformations": [
+				{
+					"name": "JoinEmpDataDepData"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> DepartmentData",
+				"source(output(",
+				"          Employee_id as string,",
+				"          First_Name as string,",
+				"          Last_Name as string,",
+				"          Gender as string,",
+				"          Salary as string,",
+				"          Date_of_Birth as string,",
+				"          Age as string,",
+				"          Country as string,",
+				"          Department_id as string,",
+				"          Date_of_Joining as string,",
+				"          Manager_id as string,",
+				"          Currency as string,",
+				"          End_Date as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> EmployeeData",
+				"DepartmentData, EmployeeData join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> JoinEmpDataDepData",
+				"JoinEmpDataDepData sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> OutputData"
+			]
+		}
+	}
+}
