@@ -1,5 +1,5 @@
 {
-	"name": "Append Set Activity",
+	"name": "Append Set  and Wait Activity",
 	"properties": {
 		"activities": [
 			{
@@ -17,7 +17,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "Append variable1",
+						"activity": "Wait1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -34,6 +34,22 @@
 						"value": "@variables('Marks')",
 						"type": "Expression"
 					}
+				}
+			},
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "Append variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 60
 				}
 			}
 		],
