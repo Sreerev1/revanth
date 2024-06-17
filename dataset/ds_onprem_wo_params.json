@@ -1,0 +1,12 @@
+{
+	"name": "ds_onprem_wo_params",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_efn_onprem",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
