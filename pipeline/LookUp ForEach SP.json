@@ -79,6 +79,9 @@
 				}
 			}
 		],
+		"folder": {
+			"name": "Old Pipelines"
+		},
 		"annotations": []
 	}
 }

@@ -75,6 +75,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "Old Pipelines"
+		},
 		"annotations": [],
 		"lastPublishTime": "2024-04-28T05:00:58Z"
 	},

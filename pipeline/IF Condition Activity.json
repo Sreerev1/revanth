@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -123,6 +124,9 @@
 			"Employee": {
 				"type": "String"
 			}
+		},
+		"folder": {
+			"name": "Old Pipelines"
 		},
 		"annotations": []
 	}
