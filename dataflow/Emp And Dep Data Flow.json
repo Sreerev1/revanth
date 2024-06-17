@@ -5,26 +5,14 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "BlobSourceDS",
-						"type": "DatasetReference"
-					},
 					"name": "EmpData"
 				},
 				{
-					"dataset": {
-						"referenceName": "BlobSourceDS2",
-						"type": "DatasetReference"
-					},
 					"name": "DeptData"
 				}
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "sinkdatasetblob",
-						"type": "DatasetReference"
-					},
 					"name": "OutputData"
 				}
 			],
@@ -49,15 +37,13 @@
 				"          Prop_11 as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> EmpData",
+				"     validateSchema: false) ~> EmpData",
 				"source(output(",
 				"          department_id as string,",
 				"          department_name as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> DeptData",
+				"     validateSchema: false) ~> DeptData",
 				"EmpData, DeptData join(EmpData@department_id == DeptData@department_id,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",

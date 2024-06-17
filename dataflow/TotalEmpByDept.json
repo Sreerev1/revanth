@@ -5,19 +5,11 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "BlobSourceDS",
-						"type": "DatasetReference"
-					},
 					"name": "Employees"
 				}
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "SinkBlobDS",
-						"type": "DatasetReference"
-					},
 					"name": "TotalEmpByDept"
 				}
 			],
@@ -42,18 +34,11 @@
 				"          Prop_11 as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Employees",
+				"     validateSchema: false) ~> Employees",
 				"Employees aggregate(groupBy(department_id),",
 				"     TotalEmployees = count(employee_id)) ~> AggregateOnDep",
 				"AggregateOnDep sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          Name as string,",
-				"          Category as string,",
-				"          Status as string,",
-				"          Error as string",
-				"     ),",
 				"     partitionFileNames:['TotalEmpByDept.csv'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",

@@ -1,0 +1,43 @@
+{
+	"name": "ds_hydrationfile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_efnprojadls1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Sheet1",
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Hydration File.xlsx",
+				"folderPath": "sharepoint",
+				"fileSystem": "source"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "sno",
+				"type": "String"
+			},
+			{
+				"name": "sourceSchema",
+				"type": "String"
+			},
+			{
+				"name": "sourceTableName",
+				"type": "String"
+			},
+			{
+				"name": "LoadType",
+				"type": "String"
+			},
+			{
+				"name": "Status",
+				"type": "String"
+			}
+		]
+	}
+}

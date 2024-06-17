@@ -5,19 +5,11 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "BlobSourceDS",
-						"type": "DatasetReference"
-					},
 					"name": "Employees"
 				}
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "sinkdatasetblob",
-						"type": "DatasetReference"
-					},
 					"name": "PayrollEmpData"
 				}
 			],
@@ -42,8 +34,7 @@
 				"          Prop_11 as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Employees",
+				"     validateSchema: false) ~> Employees",
 				"Employees filter(equals(employee_id,'3')) ~> FilterPayrollDept",
 				"FilterPayrollDept sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",

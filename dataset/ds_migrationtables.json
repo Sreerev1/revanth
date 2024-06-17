@@ -1,0 +1,16 @@
+{
+	"name": "ds_migrationtables",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azure_sqlserver",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "stg",
+			"table": "MigrationTables"
+		}
+	}
+}

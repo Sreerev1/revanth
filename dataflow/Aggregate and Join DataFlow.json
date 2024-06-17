@@ -5,26 +5,14 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "BlobSourceDS",
-						"type": "DatasetReference"
-					},
 					"name": "Employees"
 				},
 				{
-					"dataset": {
-						"referenceName": "SourceblobDataset2",
-						"type": "DatasetReference"
-					},
 					"name": "Department"
 				}
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "sinkdatasetblob",
-						"type": "DatasetReference"
-					},
 					"name": "sink1"
 				}
 			],
@@ -52,8 +40,7 @@
 				"          Prop_11 as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Employees",
+				"     validateSchema: false) ~> Employees",
 				"source(output(",
 				"          Employee_id as string,",
 				"          First_Name as string,",
@@ -70,8 +57,7 @@
 				"          End_Date as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Department",
+				"     validateSchema: false) ~> Department",
 				"Employees aggregate(groupBy(department_id),",
 				"     TotalEmployees = count(employee_id)) ~> AggregateOnDep",
 				"AggregateOnDep, Department join(AggregateOnDep@department_id == Department@Department_id,",
