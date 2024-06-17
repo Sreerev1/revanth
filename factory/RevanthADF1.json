@@ -1,0 +1,9 @@
+{
+	"name": "RevanthADF1",
+	"location": "ukwest",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e56de487-1597-45fd-9d38-bf13162760e3",
+		"tenantId": "6493ad8f-4828-4f72-83be-29eef4d7db44"
+	}
+}
